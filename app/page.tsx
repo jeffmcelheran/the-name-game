@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+
 
 /**
  * Use sessionStorage so each browser TAB counts as a separate player.
@@ -145,6 +147,10 @@ export default function HomePage() {
           >
             {busy === "start" ? "Starting..." : "Start a game"}
           </button>
+
+<Link href="/how-to-play" className="underline text-sm text-center block">
+  How to play
+</Link>
 
           <p className="text-sm text-gray-600">
             You’ll be the host and automatically join the game.
