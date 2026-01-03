@@ -12,40 +12,54 @@ export default function HowToPlayPage() {
         </div>
 
         <div className="rounded-xl border p-5 space-y-3">
-          <h1 className="text-2xl font-bold">How to play</h1>
-          <p className="text-gray-700">
-            Everyone submits a <span className="font-semibold">secret name</span>.
-            Then the host reveals the list <span className="font-semibold">one name at a time</span>.
-            Your goal is to remember the full list… then start guessing.
-          </p>
-        </div>
+          <h1 className="text-2xl font-bold">The Name Game</h1>
 
-        <div className="rounded-xl border p-5 space-y-4">
-          <h2 className="text-lg font-bold">1) Start a game</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>One person is the <span className="font-semibold">host</span>.</li>
-            <li>The host creates a game and gets a 4-letter code.</li>
-            <li>Players join using the link, code, or QR.</li>
-          </ul>
+<p className="text-gray-700">
+  Here’s how to play:
+</p>
 
-          <h2 className="text-lg font-bold">2) Everyone submits a secret name</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>Pick a real person (or character) everyone might know.</li>
-            <li>Try to avoid duplicates.</li>
-            <li>Once you submit, wait in the lobby.</li>
-          </ul>
+<div className="space-y-4 text-gray-700">
+  <p>
+    <span className="font-semibold">1.</span> Everyone enters the name of a person who will be familiar to most people in the group.
+    This can be a historical figure, fictional character, celebrity, or even someone in the room.
+  </p>
 
-          <h2 className="text-lg font-bold">3) Reveal (read the list twice)</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>The host advances the list. Everyone stays in sync.</li>
-            <li>Read each name out loud as it appears.</li>
-            <li>Try to memorize the whole list.</li>
-          </ul>
+  <p>
+    <span className="font-semibold">2.</span> The <span className="font-semibold">Host</span> reads all of the names slowly,
+    <span className="font-semibold">two times through</span>, in the same order.
+    After that, the list is cleared.
+    This is the only time the names will be read, so everyone should listen carefully and try to remember all of them.
+  </p>
 
-          <h2 className="text-lg font-bold">4) Clear the list & start guessing</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
-            <li>Once cleared, start guessing the names from memory.</li>
-            <li>You can make your own house rules (turns, points, etc.).</li>
+  <p>
+    <span className="font-semibold">3.</span> The <span className="font-semibold">youngest person</span> starts the game.
+    They try to match <span className="font-semibold">one name</span> to the person in the room who submitted it.
+  </p>
+
+  <p>
+    <span className="font-semibold">4.</span> If the guess is <span className="font-semibold">correct</span>,
+    the guesser becomes a <span className="font-semibold">team leader</span>,
+    and the person whose name was guessed joins their team.
+    Together, they make the next guess using their combined knowledge.
+  </p>
+
+  <p>
+    <span className="font-semibold">5.</span> If the guess is <span className="font-semibold">wrong</span>,
+    the person to the guesser’s right takes the next turn.
+  </p>
+
+  <p>
+    <span className="font-semibold">6.</span> Over time, teams will consolidate.
+    If a team leader correctly matches a name submitted by another team leader,
+    <span className="font-semibold">that entire team</span> joins the guessing team.
+  </p>
+
+  <p>
+    <span className="font-semibold">7.</span> Play continues until only one person or one team remains.
+    That person or team wins the game.
+  </p>
+</div>
+
           </ul>
         </div>
       </div>
