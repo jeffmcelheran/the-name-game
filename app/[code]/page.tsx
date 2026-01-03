@@ -417,85 +417,94 @@ export default function GamePage() {
             </div>
 
             {isHost && (
-              // ✅ wrap Share button + menu in a ref container
-              <div ref={shareMenuRef} className="relative">
-                <button
-                  onClick={shareGameOrOpenMenu}
-                  disabled={busy !== null}
-                  className="rounded-lg border px-3 py-1 text-sm disabled:opacity-50"
-                >
-                  Share
-                </button>
+  // ✅ wrap Share button + menu in a ref container
+  <div ref={shareMenuRef} className="relative flex items-center gap-2">
+    {/* Share button: on mobile this opens the native share sheet (Messages, etc.) */}
+    <button
+      onClick={shareGameOrOpenMenu}
+      disabled={busy !== null}
+      className="rounded-lg border px-3 py-1 text-sm disabled:opacity-50"
+    >
+      Share
+    </button>
 
-                {shareMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-56 rounded-lg border bg-white shadow">
-                    <button
-                      className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50"
-                      onClick={async () => {
-                        setShareMenuOpen(false);
-                        setShowQR(false);
-                        await copyToClipboard(state.code, "Code copied!");
-                      }}
-                    >
-                      Copy code
-                    </button>
+    {/* NEW: QR button that ALWAYS opens the in-app QR panel (mobile + desktop) */}
+    <button
+      onClick={() => {
+        setShareMenuOpen(true);
+        setShowQR(true);
+      }}
+      disabled={busy !== null}
+      className="rounded-lg border px-3 py-1 text-sm disabled:opacity-50"
+    >
+      QR
+    </button>
 
-                    <button
-                      className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50"
-                      onClick={async () => {
-                        setShareMenuOpen(false);
-                        setShowQR(false);
-                        await copyToClipboard(fullLink, "Link copied!");
-                      }}
-                    >
-                      Copy link
-                    </button>
+    {shareMenuOpen && (
+      <div className="absolute right-0 top-full mt-2 w-56 rounded-lg border bg-white shadow">
+        <button
+          className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50"
+          onClick={async () => {
+            setShareMenuOpen(false);
+            setShowQR(false);
+            await copyToClipboard(state.code, "Code copied!");
+          }}
+        >
+          Copy code
+        </button>
 
-                    <button
-                      className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50"
-                      onClick={() => setShowQR((v) => !v)}
-                    >
-                      {showQR ? "Hide QR code" : "Show QR code"}
-                    </button>
+        <button
+          className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50"
+          onClick={async () => {
+            setShareMenuOpen(false);
+            setShowQR(false);
+            await copyToClipboard(fullLink, "Link copied!");
+          }}
+        >
+          Copy link
+        </button>
 
-                    {showQR && (
-                      <div className="border-t p-3 space-y-2">
-                        <div className="text-xs text-gray-600">Scan to join</div>
-                        {qrUrl ? (
-                          <img
-                            src={qrUrl}
-                            alt="QR code to join"
-                            className="mx-auto"
-                            width={200}
-                            height={200}
-                          />
-                        ) : (
-                          <div className="text-sm text-gray-600">
-                            QR not ready yet.
-                          </div>
-                        )}
-                        <div className="text-xs text-gray-600 break-all">
-                          {fullLink}
-                        </div>
-                        <button
-                          className="w-full rounded-lg border px-3 py-2 text-sm"
-                          onClick={async () => {
-                            await copyToClipboard(fullLink, "Link copied!");
-                          }}
-                        >
-                          Copy link
-                        </button>
-                        <div className="text-[11px] text-gray-500">
-                          Tip: Press{" "}
-                          <span className="font-semibold">Esc</span> to close this
-                          menu.
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
+        <button
+          className="w-full text-left px-3 py-2 text-sm hover:bg-gray-50"
+          onClick={() => setShowQR((v) => !v)}
+        >
+          {showQR ? "Hide QR code" : "Show QR code"}
+        </button>
+
+        {showQR && (
+          <div className="border-t p-3 space-y-2">
+            <div className="text-xs text-gray-600">Scan to join</div>
+            {qrUrl ? (
+              <img
+                src={qrUrl}
+                alt="QR code to join"
+                className="mx-auto"
+                width={200}
+                height={200}
+              />
+            ) : (
+              <div className="text-sm text-gray-600">QR not ready yet.</div>
             )}
+            <div className="text-xs text-gray-600 break-all">{fullLink}</div>
+            <button
+              className="w-full rounded-lg border px-3 py-2 text-sm"
+              onClick={async () => {
+                await copyToClipboard(fullLink, "Link copied!");
+              }}
+            >
+              Copy link
+            </button>
+            <div className="text-[11px] text-gray-500">
+              Tip: Press <span className="font-semibold">Esc</span> to close this
+              menu.
+            </div>
+          </div>
+        )}
+      </div>
+    )}
+  </div>
+)}
+
           </div>
         </div>
 
