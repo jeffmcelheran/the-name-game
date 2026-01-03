@@ -406,9 +406,15 @@ export default function GamePage() {
       <div className="w-full max-w-xl space-y-4">
         {/* Top bar with Share + menu */}
         <div className="flex items-center justify-between gap-3">
-          <Link className="underline text-sm" href="/">
-            ← Home
-          </Link>
+          <div className="flex items-center gap-3">
+  <Link className="underline text-sm" href="/">
+    ← Home
+  </Link>
+  <Link className="underline text-sm" href="/how-to-play">
+    How to play
+  </Link>
+</div>
+
 
           <div className="flex items-center gap-2">
             <div className="text-sm text-gray-600">
